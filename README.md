@@ -15,6 +15,20 @@ A robust command-line tool for downloading and archiving HTML content from multi
 - ⏱️ **Rate Limiting** - Polite delays between requests to avoid overwhelming servers
 - ✅ **Resume Capability** - Skips already downloaded files for efficient re-runs
 
+## Use cases
+
+- SEO Analysis - Archive competitor websites for content analysis
+
+- Web Archiving - Preserve historical versions of important web pages
+
+- Research Projects - Collect data for academic studies
+
+- Content Migration - Download pages before site redesigns
+
+- Monitoring - Regularly capture snapshots of key pages
+
+## Usage
+
 ## Installation
 
 ### Prerequisites
@@ -34,4 +48,8 @@ venv\Scripts\activate    # Windows
 
 # Install dependencies
 pip install -r requirements.txt
+
+### Feel free to contribute or report issues
+
+```
 
