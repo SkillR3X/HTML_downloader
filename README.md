@@ -27,29 +27,142 @@ A robust command-line tool for downloading and archiving HTML content from multi
 
 - Monitoring - Regularly capture snapshots of key pages
 
-## Usage
+## Step-by-Step Setup
 
-## Installation
+### Clone the repository
 
-### Prerequisites
-- Python 3.8+
-- pip package manager
+```bash
+git clone https://github.com/yourusername/html-downloader.git
+cd html-downloader
+```
+
+### Create and activate virtual environment (recommended)
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/MacOS
+venv\Scripts\activate    # Windows
+```
+
+### Install required dependencies
+```bash
+pip install -r requirements.txt
+```
 
 ### Setup
 ```bash
 # Clone repository
 git clone https://github.com/yourusername/html-downloader.git
 cd html-downloader
+```
 
-# Create virtual environment (recommended)
+### Create virtual environment (recommended)
+```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate    # Windows
+```
 
-# Install dependencies
+### Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-### Feel free to contribute or report issues
+## Usage
+
+The HTML Downloader is a command-line tool that processes a CSV file containing URLs and downloads the HTML content of each URL into a specified directory.
+
+### Basic Command
+
+```bash
+
+python html_downloader.py -i urls.csv -o output_directory
 
 ```
+
+### Command Line Options
+
+| Option | Description | Required |
+
+|--------|-------------|----------|
+
+| `-i`, `--input` | Input CSV file with URLs (one per line) | Yes |
+
+| `-o`, `--output` | Output directory for HTML files | Yes |
+
+### Example Input File (urls.csv)
+
+Create a CSV file containing the URLs you wish to download. Example:
+
+```csv
+
+https://www.example.com
+
+https://www.wikipedia.org
+
+https://github.com
+
+https://news.ycombinator.com
+
+```
+
+### Output
+
+The tool will create the output directory if it doesn't exist. Each downloaded HTML file will be named based on the sanitized URL. For example:
+
+- `https://www.example.com` → `example_com.html`
+
+- `https://en.wikipedia.org/wiki/Python_(programming_language)` → `en_wikipedia_org_wiki_Python_programming_language.html`
+
+### Sample Run
+
+```
+
+2023-08-15 14:30:22,456 - INFO - Created output directory: /path/to/output_directory
+
+2023-08-15 14:30:22,457 - INFO - Processing 4 URLs from urls.csv
+
+2023-08-15 14:30:25,123 - INFO - [1/4] Saved: example_com.html | Status: 200
+
+2023-08-15 14:30:27,845 - INFO - [2/4] Saved: wikipedia_org.html | Status: 200
+
+2023-08-15 14:30:30,156 - INFO - [3/4] Saved: github_com.html | Status: 200
+
+2023-08-15 14:30:32,478 - INFO - [4/4] Saved: news_ycombinator_com.html | Status: 200
+
+==================================================
+
+PROCESSING SUMMARY:
+
+Total URLs: 4
+
+Successful: 4
+
+Failed: 0
+
+Output directory: /path/to/output_directory
+
+==================================================
+
+```
+
+### Advanced Usage
+
+#### Customizing Filenames
+
+You can modify the `sanitize_filename` function in the code to change how filenames are generated. For example, to keep the TLDs (like .com, .org) in the filename, remove the line that strips them.
+
+#### Adjusting Request Parameters
+
+To customize the HTTP request headers or retry strategy, edit the following sections in the code:
+
+- **Headers**: Look for the `headers` dictionary in the `download_html_from_csv` function.
+
+- **Retry Strategy**: Modify the `create_session` function.
+
+
+
+
+# Feel free to contribute or report issues
+
+
 
